@@ -29,10 +29,14 @@
                 
             $inner.height( containerHeight );
             
+            $inner.resize(function() { console.log(1); });
+            
             // Hanlde the resizing of the element:
-            $container.resize(function() {
+            $container.add($inner).resize(function() {
                 scrollHeight = $inner.prop('scrollHeight');
                 containerHeight = $(this).height();
+                
+                console.log(1);
                 
                 $inner.height( containerHeight );
                 
@@ -309,8 +313,10 @@
       elems.each(function(){
         var elem = $(this),
           width = elem.width(),
-          height = elem.height(),
+          height = elem[0].scrollHeight,
           data = $.data( this, str_data );
+        
+        
         
         // If element size has changed since the last time, update the element
         // data store and trigger the 'resize' event.
