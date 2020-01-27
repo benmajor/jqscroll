@@ -26,11 +26,15 @@
             // Parse the top and bottom padding on the trackbar:
             let trackbarPaddingTop = parseInt( $trackbar.css('padding-top') ),
                 trackbarpaddingBtm = parseInt( $trackbar.css('padding-bottom') );
+                
+            $inner.height( containerHeight );
             
             // Hanlde the resizing of the element:
             $container.resize(function() {
                 scrollHeight = $inner.prop('scrollHeight');
                 containerHeight = $(this).height();
+                
+                $inner.height( containerHeight );
                 
                 // Size the scroller:
                 let ratio = containerHeight / scrollHeight,
